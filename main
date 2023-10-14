@@ -108,9 +108,9 @@ if __name__ == "__main__":
     print("Hello, I am your virtual assistant. How can I help you?")
     while True:
         command = input(
-            "To add contact type: add, name, address, phone, email, birthday. To change type: change, name, new phone number. To search phone number by name type: search, name. To show all contacts type: show  \n"
+            "To add contact type: add, name, address, phone, email, birthday. To change type: change, name, new phone number. To search phone number by name type: search, name. To show all contacts type: show. Enter to exit.  \n"
         )
-        if command.lower() in ["good bye", "exit", "close", "."]:
+        if command.lower() in ["good bye", "exit", "close", ""]:
             print("Good bye!")
             break
         task = command_parser(command)
