@@ -1,26 +1,41 @@
 from datetime import datetime
 
 
-def day_of_birthday(year, month, day):
-    # Pobierz  datę urodzenia
-    birthday = datetime(year, month, day)
-
-    # Pobierz aktualną datę
-    today = datetime.now()
-
-    # Sprawdź, czy urodziny już były w tym roku, jeśli nie, to dodaj rok
-    if today < datetime(today.year, birthday.month, birthday.day):
-        birthday = datetime(today .year, birthday.month, birthday.day)
-    else:
-        birthday = datetime(today .year + 1, birthday.month, birthday.day)
-
-    # Oblicz różnicę między datą urodzin a dzisiejszą datą
-    delta = birthday - today
-    return delta.days
+def print_birthday_left(input_dict):
+    def get_birthday(input_dict):
+        # Sprawdź, czy klucz "birthday" istnieje w słowniku
+        if "birthday" in input_dict:
+            return input_dict["birthday"]
+        else:
+            return None  # Zwróć None, jeśli klucz "birthday" nie istnieje
 
 
-birth = day_of_birthday(2002, 6, 22)
+    def day_of_birthday(year, month, day):
+        birthday = datetime(year, month, day)
+
+        # Pobierz aktualną datę
+        today = datetime.now()
+
+        # Sprawdź, czy urodziny już były w tym roku, jeśli nie, to dodaj rok
+        if today < datetime(today.year, birthday.month, birthday.day):
+             birthday = datetime(today.year, birthday.month, birthday.day)
+        else:
+             birthday = datetime(today.year + 1, birthday.month, birthday.day)
+
+        # Oblicz różnicę między datą urodzin a dzisiejszą datą
+        delta = birthday - today
+        return delta.days
+
+
+    date = get_birthday(input_dict)
+    date = date.split("-")
+    birth = [int(s) for s in date]
+    result = day_of_birthday(birth[0], birth[1], birth[2])
+    return result
 
 
 if __name__ == "__main__":
-    print(f"Do twoich urodzin pozostało {birth} dni")
+    in_dict = {"name": "John Smith", "birthday": "1990-05-15"}
+    total = print_birthday_left(in_dict)
+
+    print(total)
