@@ -45,7 +45,7 @@ if __name__ == "__main__":
             else:
                 return None
 
-        def remove_contact(self, name):  # Zmieniono "id" na "name"
+        def remove_contact(self, name):
             for contact in self.contacts:
                 if contact["name"] == name:
                     self.contacts.remove(contact)
@@ -139,8 +139,9 @@ if __name__ == "__main__":
     while True:
         command = input(
             "To add contact type: add, name, address, phone, email, birthday.\nTo change type: change, name, new phone number.\nTo search phone number by name type: search, name.\nTo show all contacts type: show.\nTo add a note to a contact type: addnote, name, note.  \n"
+
         )
-        if command.lower() in ["good bye", "exit", "close", "."]:
+        if command.lower() in ["good bye", "exit", "close", ""]:
             print("Good bye!")
             break
         task = command_parser(command)
