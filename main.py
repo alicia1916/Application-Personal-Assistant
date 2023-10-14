@@ -30,12 +30,32 @@ if __name__ == "__main__":
             result = list(
                 filter(lambda contact: contact.get("name") == name, self.contacts)
             )
-            return result[0] if len(result) > 0 else None
+            if len(result) > 1:
+                print("Multiple contacts found with the same name:")
+                for i, contact in enumerate(result):
+                    print(f"{i + 1}: {contact['name']}")
+                choice = input("Enter the number of the contact you want to select: ")
+                try:
+                    selected_contact = result[int(choice) - 1]
+                except (ValueError, IndexError):
+                    selected_contact = None
+                return selected_contact
+            elif len(result) == 1:
+                return result[0]
+            else:
+                return None
 
         def remove_contact(self, name):
             for contact in self.contacts:
                 if contact["name"] == name:
                     self.contacts.remove(contact)
+
+        def add_note_to_contact(self, name, note):
+            contact = self.get_contact_by_name(name)
+            if contact:
+                contact["note"] = note
+            else:
+                print("Contact not found")
 
     def input_error(func):
         def wrapper(values):
@@ -90,12 +110,22 @@ if __name__ == "__main__":
     def show_all_fun(_: list):
         for contact in contacts.list_contacts():
             print(f"{contact['name']}: {contact}")
+    
+    @input_error
+    def add_note_fun(values: list):
+        if len(values) == 2:
+            name, note = values
+            contacts.add_note_to_contact(name, note)
+            print("Note added to contact.")
+        else:
+            print("Invalid input format")
 
     KEYWORDS = {
         "add": add_fun,
         "change": change_fun,
         "search": phone_fun,
         "show": show_all_fun,
+        "addnote": add_note_fun,
     }
 
     def command_parser(text: str) -> dict:
@@ -108,7 +138,8 @@ if __name__ == "__main__":
     print("Hello, I am your virtual assistant. How can I help you?")
     while True:
         command = input(
-            "To add contact type: add, name, address, phone, email, birthday. To change type: change, name, new phone number. To search phone number by name type: search, name. To show all contacts type: show. Enter to exit.  \n"
+            "To add contact type: add, name, address, phone, email, birthday.\nTo change type: change, name, new phone number.\nTo search phone number by name type: search, name.\nTo show all contacts type: show.\nTo add a note to a contact type: addnote, name, note.  \n"
+
         )
         if command.lower() in ["good bye", "exit", "close", ""]:
             print("Good bye!")
