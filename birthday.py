@@ -19,7 +19,7 @@ def day_of_birthday(year, month, day):
     return delta.days
 
 
-birth = day_of_birthday(1978, 6, 30)
+birth = day_of_birthday(2002, 6, 22)
 
 
 if __name__ == "__main__":
