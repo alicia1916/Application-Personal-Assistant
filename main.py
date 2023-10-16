@@ -148,5 +148,5 @@ def main():
             KEYWORDS[task["keyword"]](task["values"])
         except Exception as e:
             print(f"I do not understand what you want: {str(e)}")
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
