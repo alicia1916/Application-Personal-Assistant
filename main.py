@@ -86,6 +86,7 @@ def change_fun(values: list):
         if contact:
             contacts.remove_contact(name)
             contacts.add_contact(name, "", new_phone, "", "")
+            print('Phone number has been changed successfully.')
         else:
             print("Contact not found")
     else:
