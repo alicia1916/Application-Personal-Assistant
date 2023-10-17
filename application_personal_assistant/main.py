@@ -20,12 +20,18 @@ def main():
     print("Hello, I am your virtual assistant. How can I help you?")
     while True:
         command = input(
-            "To add contact type: add, name, address, phone, email, birthday.\nTo change type: change, name, new phone number.\nTo search phone number by name type: search, name.\nTo show all contacts type: show.\nTo add a note to a contact type: addnote, name, note.  \n"
+            "To add contact type: add, name, address, phone, email, birthday.\nTo change type: change, name, new phone number.\nTo search phone number by name type: search, name.\nTo show all contacts type: show.\nTo add a note to a contact type: addnote, name, note.\nTo manage birthday data type: birthday.\n"
 
         )
         if command.lower() in ["good bye", "exit", "close", ""]:
             print("Good bye!")
             break
+        elif command=='birthday':
+            birthday_task = input('To check birthday info type: check.\nTo check upcoming birthday by number of days type: upcoming.\n')
+            if birthday_task=='check':
+
+            elif birthday_task=='upcoming':
+                
         task = command_parser(command)
         try:
             KEYWORDS[task["keyword"]](task["values"])
