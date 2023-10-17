@@ -25,14 +25,17 @@ def print_n_day_birthday(sort_list, n):
             print(
                     f"Name: {person['name']}, Birthday: {person['birthday']}, "
                     f"Days to Next Birthday: {calculate_days_to_birthday(person['birthday'])}")
+    return sort_list
 
 
 if __name__ == "__main__":
     input_list = [
         {"name": "John", "birthday": "1990-11-02"},
         {"name": "Alice", "birthday": "1992-10-30"},
-        {"name": "Bob", "birthday": "1995-03-10"}
+        {"name": "Bob", "birthday": "1995-03-10"},
+        {"name": "Alex", "birthday": "1995-12-10"},
+        {"name": "Martha", "birthday": "1995-01-10"}
     ]
     sorted_list = sort_dict_list_by_birthday(input_list)
-    print_n_day_birthday(sorted_list, 160)
-    print(sorted_list)
+    total = print_n_day_birthday(sorted_list, 90)
+    print(total)
