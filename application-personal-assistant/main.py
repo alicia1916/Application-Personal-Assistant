@@ -1,4 +1,4 @@
-from poza_mainem import add_fun, change_fun, phone_fun, show_all_fun, add_note_fun
+from poza_mainem import add_fun, change_fun, phone_fun, show_all_fun, add_note_fun, input_error
 
 KEYWORDS = {
     "add": add_fun,
