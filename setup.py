@@ -8,6 +8,6 @@ setup(
     author='group_2',
     author_email='alicja.barylski@gmail.com',
     license='MIT',
-    packages=['application-personal-assistant'],
-    entry_points={'console_scripts': ['assistant = application-personal-assistant.main:main']}
+    packages=['application_personal_assistant'],
+    entry_points={'console_scripts': ['assistant = application_personal_assistant.main:main']}
 )
