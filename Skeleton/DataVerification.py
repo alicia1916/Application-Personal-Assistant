@@ -32,16 +32,16 @@ class DataVerification:
                 return False
 
         @staticmethod
-        def birth_verification(contact):
+        def birthday_verification(contact):
             try:
-                birth = contact['birth_date']
-                if birth is None:
-                    print("No birth_date in contact")
+                birthday = contact['birthday']
+                if birthday is None:
+                    print("No birthday in contact")
                     return False
-                datetime.strptime(str(birth), '%Y-%m-%d')
+                datetime.strptime(str(birthday), '%Y-%m-%d')
                 return True
             except KeyError:
-                print ("No birth_date in contact")
+                print ("No birthday in contact")
                 return False
             except ValueError:
                 return False
@@ -50,6 +50,6 @@ class DataVerification:
         def result_verification(contact):
             phone_result = DataVerification.phone_verification(contact)
             email_result = DataVerification.email_verification(contact)
-            birth_result = DataVerification.birth_verification(contact)
-            results = {"phone":phone_result, "email":email_result, "birth_date":birth_result}
+            birth_result = DataVerification.birthday_verification(contact)
+            results = {"phone":phone_result, "email":email_result, "birthday":birth_result}
             return results
