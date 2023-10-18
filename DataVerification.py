@@ -7,9 +7,9 @@ class DataVerification:
         def phone_verification(contact):
             try:
                 phone_number = contact['phone']
-                    if phone_number is None:
-                        print("No phone in contact")
-                        return False
+                if phone_number is None:
+                    print("No phone in contact")
+                    return False
                 pattern = re.compile(r'^(\+\d{1,3}\s?)?(\d{3}-\d{3}-\d{3}|\d{9,12})$') #stworzenie wzorca nr tel opcja samych cyfr, z kierunkowym i z "-"
                 result = bool(pattern.match(str(phone_number))) # uzyskanie wyniku True albo False w zależności czy numer został prawidłowo wpisany
                 return result

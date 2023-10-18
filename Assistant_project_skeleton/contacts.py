@@ -11,6 +11,8 @@ from notes import menage_notes
 
 
 from birthday import cooming_birthday
+import Levenshtein
+from nearest_match import find_closest_match
 
 
 class Contacts:
@@ -163,3 +165,35 @@ class Contacts:
 
     def save(self):
         pass
+
+
+    def edit():
+        while True:
+            command = input(
+                "What do you want to edit ?\nphone number\naddress\nemail\nbirthday\nnote\nTo end edition and return to main menu type: close.\n"
+            )
+            if command == "back":
+                break
+            elif command not in [
+                "phone number",
+                "address",
+                "email",
+                "birthday",
+                "note",
+                "close",
+            ]:
+                proper = find_closest_match(command)
+                answer = input(f"I didn't understand you. Did you mean <{proper}>? yes/no")
+                if answer == "no":
+                    continue
+                else:
+                    command = find_closest_match(command)
+            elif command in [
+                "phone number",
+                "address",
+                "email",
+                "birthday",
+                "note",
+                "close",
+            ]:
+                name = input("What contact do you want to edit? Type name please. ")
