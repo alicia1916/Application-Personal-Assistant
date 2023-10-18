@@ -70,7 +70,7 @@ KEYWORDS = {
 
 def main():
     print("Hello, I am your virtual assistant\n")
-    my_contacts_book = Contacts()  # odpala się konstruktor klasy
+    contacts = Contacts()  # odpala się konstruktor klasy
 
     while True:
         command = input(
@@ -82,10 +82,10 @@ def main():
             break
 
         try:
-            KEYWORDS[command](my_contacts_book)
+            KEYWORDS[command](contacts)
         except:
             command = command_assistant(command)
-            KEYWORDS[command](my_contacts_book)
+            KEYWORDS[command](contacts)
 
 
 if __name__ == "__main__":
