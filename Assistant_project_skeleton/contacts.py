@@ -96,24 +96,38 @@ class Contacts:
         for contact in self.contacts:
             print(contact)
 
+    #def get_contact_by_name(self, name):
+    #    result = list(
+    #       filter(lambda contact: contact.get("name") == name, self.contacts)
+    #    )
+    #    if len(result) > 1:
+    #        print("Multiple contacts found with the same name:")
+    #        for i, contact in enumerate(result):
+    #            print(f"{i + 1}: {contact['name']}")
+    #        choice = input("Enter the number of the contact you want to select: ")
+    #        try:
+    #            selected_contact = result[int(choice) - 1]
+    #        except (ValueError, IndexError):
+    #            selected_contact = None
+    #        return selected_contact
+    #    elif len(result) == 1:
+    #        return result[0]
+    #    else:
+    #        return None
+    
     def get_contact_by_name(self, name):
-        result = list(
-            filter(lambda contact: contact.get("name") == name, self.contacts)
-        )
-        if len(result) > 1:
-            print("Multiple contacts found with the same name:")
-            for i, contact in enumerate(result):
-                print(f"{i + 1}: {contact['name']}")
-            choice = input("Enter the number of the contact you want to select: ")
-            try:
-                selected_contact = result[int(choice) - 1]
-            except (ValueError, IndexError):
-                selected_contact = None
-            return selected_contact
-        elif len(result) == 1:
-            return result[0]
-        else:
-            return None
+        result = None
+        for dict in self.contacts:
+            if name in dict.values():
+                result = dict
+        return result
+    
+    def get_contact_by_data(self, data):
+        result = None
+        for dict in self.contacts:
+            if data in dict.values():
+                result = dict
+        return result
 
     def remove_contact(self, name):
         for contact in self.contacts:
@@ -170,17 +184,15 @@ class Contacts:
     def edit():
         while True:
             command = input(
-                "What do you want to edit ?\nphone number\naddress\nemail\nbirthday\nnote\nTo end edition and return to main menu type: close.\n"
+                "What do you want to edit?\nphone number\naddress\nemail\nbirthday\nnotes\nTo end edition and return to main menu type: close.\n"
             )
-            if command == "back":
-                break
-            elif command not in [
+            if command not in [
                 "phone number",
                 "address",
                 "email",
                 "birthday",
-                "note",
                 "close",
+                "notes",
             ]:
                 proper = find_closest_match(command)
                 answer = input(f"I didn't understand you. Did you mean <{proper}>? yes/no")
@@ -188,12 +200,48 @@ class Contacts:
                     continue
                 else:
                     command = find_closest_match(command)
-            elif command in [
-                "phone number",
-                "address",
-                "email",
-                "birthday",
-                "note",
-                "close",
-            ]:
+
+            if command == "close":
+                break
+            elif command == "notes":
+                contacts.manage_notes()
+            elif command in ["phone number", "address", "email", "birthday"]:
                 name = input("What contact do you want to edit? Type name please. ")
+                searched_dict = contacts.get_contact_by_name(name)
+                if searched_dict != None:
+                    if command == "address":
+                        new_address = input("Enter new address. ")
+                        contacts.remove_contact(name)
+                        #    contacts.add_contact(name, new_address, "", "", "")
+                        print("Address has been changed successfully.")
+                    elif command == "phone number":
+                        new_phone = input("Enter new phone number. ")
+                        contacts.remove_contact(name)
+                        #    contacts.add_contact(name, "", new_phone, "", "")
+                        print("Phone number has been changed successfully.")
+                    elif command == "email":
+                        new_email = input("Enter new email. ")
+                        contacts.remove_contact(name)
+                        #    contacts.add_contact(name, "", "", new_email, "")
+                        print("Email has been changed successfully.")
+                    elif command == "birthday":
+                        new_birthday = input("Enter new birthday date. ")
+                        contacts.remove_contact(name)
+                        #    contacts.add_contact(name, "", "", "", new_birthday)
+                        print("Phone number has been changed successfully.")
+
+                elif searched_dict == None:
+                    change_name = input(
+                        "Contact not found. Do you want to change contact's name? yes / no "
+                    )
+                    if change_name == "yes":
+                        data = input("Search contact by any information. ")
+                        searched_contact = contacts.get_contact_by_data(data)
+                        if searched_contact != None:
+                            new_name = input("Enter new name ")
+                            #        contacts.add_contact(name, "", new_phone, "", "")
+                            print("Name has been changed successfully.")
+                        else:
+                            print("Contact not found. Try again.")
+                    elif change_name == "no":
+                        pass
