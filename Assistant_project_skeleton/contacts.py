@@ -16,7 +16,7 @@ from nearest_match import find_closest_match
 
 
 class Contacts:
-    current_id = 0
+    #current_id = 0
 
     def __init__(self):
         self.contacts = []
@@ -70,7 +70,7 @@ class Contacts:
 
         self.contacts.append(
             {
-                "id": Contacts.current_id,
+#                "id": Contacts.current_id,
                 "name": name,
                 "address": address,
                 "phone": phone,
@@ -79,7 +79,7 @@ class Contacts:
                 "notes": [],
             }
         )
-        Contacts.current_id += 1
+#        Contacts.current_id += 1
 
     def show_choosen_contact(self, name):
         i = 0
