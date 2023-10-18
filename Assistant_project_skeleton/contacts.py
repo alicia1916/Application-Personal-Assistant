@@ -8,7 +8,7 @@ from data_verification import (
     birthday_verification,
 )
 from notes import menage_notes
-
+from DataVerification import *
 
 from birthday import cooming_birthday
 import Levenshtein
@@ -214,21 +214,42 @@ class Contacts:
                         contacts.remove_contact(name)
                         #    contacts.add_contact(name, new_address, "", "", "")
                         print("Address has been changed successfully.")
+                    
                     elif command == "phone number":
-                        new_phone = input("Enter new phone number. ")
-                        contacts.remove_contact(name)
-                        #    contacts.add_contact(name, "", new_phone, "", "")
-                        print("Phone number has been changed successfully.")
+                        while True:
+                            new_phone = input("Enter new phone number. ")
+                            if new_phone == 'close':
+                                break
+                            elif phone_verification(new_phone) == True:
+                                contacts.remove_contact(name)
+                            #    contacts.add_contact(name, "", new_phone, "", "")
+                                print("Phone number has been changed successfully.")
+                            else:
+                                print("Format of given number is wrong. Try again\nTo exit type: <close> as a new number.")
+                    
                     elif command == "email":
-                        new_email = input("Enter new email. ")
-                        contacts.remove_contact(name)
-                        #    contacts.add_contact(name, "", "", new_email, "")
-                        print("Email has been changed successfully.")
+                        while True:
+                            new_email = input("Enter new email. ")
+                            if new_email == 'close':
+                                break
+                            elif email_verification(new_email) == True:
+                                contacts.remove_contact(name)
+                            #    contacts.add_contact(name, "", "", new_email, "")
+                                print("Email has been changed successfully.")
+                            else:
+                                print("Format of given email is wrong. Try again\nTo exit type: <close> as a new email.")
+                    
                     elif command == "birthday":
-                        new_birthday = input("Enter new birthday date. ")
-                        contacts.remove_contact(name)
-                        #    contacts.add_contact(name, "", "", "", new_birthday)
-                        print("Phone number has been changed successfully.")
+                        while True:
+                            new_birthday = input("Enter new birthday. ")
+                            if new_birthday == 'close':
+                                break
+                            elif birthday_verification(new_birthday) == True:
+                                contacts.remove_contact(name)
+                            #    contacts.add_contact(name, "", "", "", new_birthday)
+                                print("Birthday date has been changed successfully.")
+                            else:
+                                print("Format of given birthday date is wrong. Try again\nTo exit type: <close> as a new birthday date.")
 
                 elif searched_dict == None:
                     change_name = input(
