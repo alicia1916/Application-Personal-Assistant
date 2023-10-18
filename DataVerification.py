@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 
 class DataVerification:
 
@@ -10,7 +11,7 @@ class DataVerification:
                         print("No phone in contact")
                         return False
                 pattern = re.compile(r'^(\+\d{1,3}\s?)?(\d{3}-\d{3}-\d{3}|\d{9,12})$') #stworzenie wzorca nr tel opcja samych cyfr, z kierunkowym i z "-"
-                result = bool(pattern.match(phone_number)) # uzyskanie wyniku True albo False w zależności czy numer został prawidłowo wpisany
+                result = bool(pattern.match(str(phone_number))) # uzyskanie wyniku True albo False w zależności czy numer został prawidłowo wpisany
                 return result
             except KeyError:
                 print ("No phone in contact")
@@ -24,7 +25,7 @@ class DataVerification:
                     print("No email in contact")
                     return False
                 pattern = re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z][a-zA-Z]+$')
-                result = bool(pattern.match(email))
+                result = bool(pattern.match(str(email)))
                 return result
             except KeyError:
                 print ("No email in contact")
@@ -37,11 +38,12 @@ class DataVerification:
                 if birth is None:
                     print("No birth_date in contact")
                     return False
-                pattern = re.compile(r'^\d{4}-\d{2}-\d{2}$')
-                result = bool(pattern.match(birth))
-                return result
+                datetime.strptime(str(birth), '%Y-%m-%d')
+                return True
             except KeyError:
                 print ("No birth_date in contact")
+                return False
+            except ValueError:
                 return False
         
         @staticmethod
