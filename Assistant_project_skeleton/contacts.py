@@ -212,7 +212,15 @@ class Contacts:
                     if command == "address":
                         new_address = input("Enter new address. ")
                         contacts.remove_contact(name)
-                        #    contacts.add_contact(name, new_address, "", "", "")
+                        contacts.add_contact(
+                            name,
+                            new_address,
+                            searched_dict["phone"],
+                            searched_dict["email"],
+                            searched_dict["birthday"],
+                            searched_dict["note"],
+                            searched_dict["tags"],
+                        )
                         print("Address has been changed successfully.")
                     
                     elif command == "phone number":
@@ -222,8 +230,17 @@ class Contacts:
                                 break
                             elif phone_verification(new_phone) == True:
                                 contacts.remove_contact(name)
-                            #    contacts.add_contact(name, "", new_phone, "", "")
+                                contacts.add_contact(
+                                    name,
+                                    searched_dict["address"],
+                                    new_phone,
+                                    searched_dict["email"],
+                                    searched_dict["birthday"],
+                                    searched_dict["note"],
+                                    searched_dict["tags"],
+                                )
                                 print("Phone number has been changed successfully.")
+                                break
                             else:
                                 print("Format of given number is wrong. Try again\nTo exit type: <close> as a new number.")
                     
@@ -234,8 +251,17 @@ class Contacts:
                                 break
                             elif email_verification(new_email) == True:
                                 contacts.remove_contact(name)
-                            #    contacts.add_contact(name, "", "", new_email, "")
+                                contacts.add_contact(
+                                    name,
+                                    searched_dict["address"],
+                                    searched_dict["phone"],
+                                    new_email,
+                                    searched_dict["birthday"],
+                                    searched_dict["note"],
+                                    searched_dict["tags"],
+                                )
                                 print("Email has been changed successfully.")
+                                break
                             else:
                                 print("Format of given email is wrong. Try again\nTo exit type: <close> as a new email.")
                     
@@ -246,8 +272,17 @@ class Contacts:
                                 break
                             elif birthday_verification(new_birthday) == True:
                                 contacts.remove_contact(name)
-                            #    contacts.add_contact(name, "", "", "", new_birthday)
+                                contacts.add_contact(
+                                    name,
+                                    searched_dict["address"],
+                                    searched_dict["phone"],
+                                    searched_dict["email"],
+                                    new_birthday,
+                                    searched_dict["note"],
+                                    searched_dict["tags"],
+                                )
                                 print("Birthday date has been changed successfully.")
+                                break
                             else:
                                 print("Format of given birthday date is wrong. Try again\nTo exit type: <close> as a new birthday date.")
 
