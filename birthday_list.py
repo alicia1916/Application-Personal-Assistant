@@ -19,23 +19,32 @@ def sort_dict_list_by_birthday(dict_list):
     return sorted_list
 
 
-def print_n_day_birthday(sort_list, n):
+def print_n_day_birthday(sort_list, day):
     for person in sort_list:
-        if calculate_days_to_birthday(person['birthday']) <= n:
+        if calculate_days_to_birthday(person['birthday']) <= int(day):
+
             print(
                     f"Name: {person['name']}, Birthday: {person['birthday']}, "
                     f"Days to Next Birthday: {calculate_days_to_birthday(person['birthday'])}")
     return sort_list
 
 
+def coming_birthday(input_list):
+    day = input("up to how many days you want to display birthdays?: ")
+    sorted_list = sort_dict_list_by_birthday(input_list)
+    print_n_day_birthday(sorted_list, day)
+    return sorted_list
+
+
 if __name__ == "__main__":
-    input_list = [
+    '''input_list = [
         {"name": "John", "birthday": "1990-11-02"},
         {"name": "Alice", "birthday": "1992-10-30"},
         {"name": "Bob", "birthday": "1995-03-10"},
         {"name": "Alex", "birthday": "1995-12-10"},
         {"name": "Martha", "birthday": "1995-01-10"}
-    ]
-    sorted_list = sort_dict_list_by_birthday(input_list)
-    total = print_n_day_birthday(sorted_list, 90)
-    print(total)
+    ]'''
+    day_for_bithday = coming_birthday(input_list)
+    # jeśli nie chcemy zwracać całej listy nie printujemy day_for_birthday
+
+    print(day_for_bithday)
