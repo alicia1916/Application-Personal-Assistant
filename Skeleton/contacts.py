@@ -10,7 +10,7 @@
 from notes import menage_notes
 from DataVerification import *
 
-from birthday import cooming_birthday
+from birthday import calculate_days_to_birthday, sort_dict_list_by_birthday, print_n_day_birthday
 import Levenshtein
 from nearest_match import find_closest_match
 
@@ -165,21 +165,29 @@ class Contacts:
         for contact in self.contacts:
             print(contact["name"])
 
-    def get_cooming_birthday(self):
-        birthday_list = []
-        for contact in self.contacts:
-            birthday = {"name": contact["name"], "birthday": contact["birthday"]}
-            birthday_list.append(birthday)
-        cooming_soon_birthday_list = cooming_birthday(birthday_list)
-        print(
-            cooming_soon_birthday_list
-        )  # wyprintuje tylko imię, datę urodzin i liczbę dni do urodzin
+    def get_comming_birthday(self):
+        answer = input('To check upcoming birthday type: upcoming.\nTo view list of birthdays type: list.\n')
+        if answer == 'upcoming':
+            try:
+                days_left = int(input('Enter number of days left to check upcoming birthday. '))
+                for contact in self.contacts:
+                    days = calculate_days_to_birthday(contact['birthday'])
+                    if days <= days_left:
+                        print(
+                        f"Name: {contact['name']}, Birthday: {contact['birthday']},"
+                        f"Days to Next Birthday: {days}")
+            except Exception:
+                print('You have not entered a number. Try again.')
+        else:
+            print(sort_dict_list_by_birthday(self.contacts))
+
+
 
     def save(self):
         pass
 
 
-    def edit():
+    def edit(self):
         while True:
             command = input(
                 "What do you want to edit?\nphone\naddress\nemail\nbirthday\nnotes\nTo end edition and return to main menu type: close.\n"
@@ -202,15 +210,15 @@ class Contacts:
             if command == "close":
                 break
             elif command == "notes":
-                contacts.manage_notes()
+                self.manage_notes()
             elif command in ["phone", "address", "email", "birthday"]:
                 name = input("What contact do you want to edit? Type name please. ")
-                searched_dict = contacts.get_contact_by_name(name)
+                searched_dict = self.get_contact_by_name(name)
                 if searched_dict != None:
                     if command == "address":
                         new_address = input("Enter new address. ")
-                        contacts.remove_contact(name)
-                        contacts.add_contact(
+                        self.remove_contact(name)
+                        self.add_contact(
                             name,
                             new_address,
                             searched_dict["phone"],
@@ -227,8 +235,8 @@ class Contacts:
                             if new_phone == 'close':
                                 break
                             elif phone_verification(new_phone) == True:
-                                contacts.remove_contact(name)
-                                contacts.add_contact(
+                                self.remove_contact(name)
+                                self.add_contact(
                                     name,
                                     searched_dict["address"],
                                     new_phone,
@@ -248,8 +256,8 @@ class Contacts:
                             if new_email == 'close':
                                 break
                             elif email_verification(new_email) == True:
-                                contacts.remove_contact(name)
-                                contacts.add_contact(
+                                self.remove_contact(name)
+                                self.add_contact(
                                     name,
                                     searched_dict["address"],
                                     searched_dict["phone"],
@@ -269,8 +277,8 @@ class Contacts:
                             if new_birthday == 'close':
                                 break
                             elif birthday_verification(new_birthday) == True:
-                                contacts.remove_contact(name)
-                                contacts.add_contact(
+                                self.remove_contact(name)
+                                self.add_contact(
                                     name,
                                     searched_dict["address"],
                                     searched_dict["phone"],
@@ -290,7 +298,7 @@ class Contacts:
                     )
                     if change_name == "yes":
                         data = input("Search contact by any information. ")
-                        searched_contact = contacts.get_contact_by_data(data)
+                        searched_contact = self.get_contact_by_data(data)
                         if searched_contact != None:
                             new_name = input("Enter new name ")
                             #        contacts.add_contact(name, "", new_phone, "", "")

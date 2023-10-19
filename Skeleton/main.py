@@ -19,7 +19,8 @@ def help_fun(book: Contacts):
         show - display all information about contact/contacts
         names - display all names with no more informations
         notes - menage notes of choosen contact
-        birthday - display contacts whoose birthday are cooming...
+        birthday - birthday reminder
+        edit - edit information
         exit"""
     )
 
@@ -52,7 +53,10 @@ def notes_fun(book: Contacts):
 
 
 def birthday_fun(book: Contacts):
-    book.get_cooming_birthday()
+    book.get_comming_birthday()
+
+def edit(book: Contacts):
+    book.edit()
 
 
 # Keywords
@@ -65,16 +69,17 @@ KEYWORDS = {
     "names": names_fun,
     "notes": notes_fun,
     "birthday": birthday_fun,
+    "edit": edit
 }
 
 
 def main():
-    print("Hello, I am your virtual assistant\n")
+    print("Hello, I am your virtual assistant.\n")
     contacts = Contacts()  # odpala się konstruktor klasy
 
     while True:
         command = input(
-            "What do you want to do? Input 'help' to get a list of keywords\n"
+            "What do you want to do with your contacts? Input 'help' to get a list of keywords\n"
         )
         # print(command)
 
