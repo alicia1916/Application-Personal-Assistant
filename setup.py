@@ -9,5 +9,6 @@ setup(
     author_email='alicja.barylski@gmail.com',
     license='MIT',
     packages=['application_personal_assistant'],
+    install_requires=['python-Levenshtein']
     entry_points={'console_scripts': ['assistant = application_personal_assistant.main:main']}
 )
