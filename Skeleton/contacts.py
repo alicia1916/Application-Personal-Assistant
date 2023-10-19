@@ -184,10 +184,10 @@ class Contacts:
     def edit():
         while True:
             command = input(
-                "What do you want to edit?\nphone number\naddress\nemail\nbirthday\nnotes\nTo end edition and return to main menu type: close.\n"
+                "What do you want to edit?\nphone\naddress\nemail\nbirthday\nnotes\nTo end edition and return to main menu type: close.\n"
             )
             if command not in [
-                "phone number",
+                "phone",
                 "address",
                 "email",
                 "birthday",
@@ -205,7 +205,7 @@ class Contacts:
                 break
             elif command == "notes":
                 contacts.manage_notes()
-            elif command in ["phone number", "address", "email", "birthday"]:
+            elif command in ["phone", "address", "email", "birthday"]:
                 name = input("What contact do you want to edit? Type name please. ")
                 searched_dict = contacts.get_contact_by_name(name)
                 if searched_dict != None:
@@ -223,7 +223,7 @@ class Contacts:
                         )
                         print("Address has been changed successfully.")
                     
-                    elif command == "phone number":
+                    elif command == "phone":
                         while True:
                             new_phone = input("Enter new phone number. ")
                             if new_phone == 'close':
