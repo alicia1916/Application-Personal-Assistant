@@ -1,41 +1,100 @@
-from poza_mainem import show_all_fun, add_note_fun, input_error
-from contacts_manager import add_fun, change_fun, phone_fun
+# Olka
+
+
+# Imports
+from contacts import Contacts  # klasa Contacts
+import Levenshtein
+from nearest_match import find_closest_match
+#from command_assistant import (
+#    command_assistant,
+#)  # asystent dowodzenia czyli podpowiadacz ;)
+
+
+# Command handlers
+
+
+def help_fun(book: Contacts):
+    print(
+        """List of keywords:
+        save - saving list of contacts to file
+        add - add new contacts to your contacts book
+        show - display all information about contact/contacts
+        names - display all names with no more informations
+        notes - menage notes of choosen contact
+        birthday - birthday reminder
+        edit - edit information
+        exit"""
+    )
+
+
+def save_fun(book: Contacts):
+    book.save_contacts_to_file()
+
+
+def add_fun(book: Contacts):
+    book.add_contact()
+
+
+def show_fun(book: Contacts):
+    name = input(
+        "Enter the name of contact or input all if you want to show all contacts"
+    )
+    if name.lower() == "all":
+        # print(book.__str__())
+        book.show_all_contacts()
+    else:
+        book.show_choosen_contact(name)
+
+
+def names_fun(book: Contacts):
+    book.display_all_names()
+
+
+def notes_fun(book: Contacts):
+    book.menage_notes()
+
+
+def birthday_fun(book: Contacts):
+    book.get_comming_birthday()
+
+def edit(book: Contacts):
+    book.edit()
+
+
+# Keywords
 
 KEYWORDS = {
+    "help": help_fun,
+    "save": save_fun,
     "add": add_fun,
-    "change": change_fun,
-    "search": phone_fun,
-    "show": show_all_fun,
-    "addnote": add_note_fun,
+    "show": show_fun,
+    "names": names_fun,
+    "notes": notes_fun,
+    "birthday": birthday_fun,
+    "edit": edit
 }
 
-def command_parser(text: str) -> dict:
-    task = {"keyword": [], "values": []}
-    words = text.split(", ")
-    task["keyword"] = words[0]
-    task["values"] = words[1:]
-    return task
-    
+
 def main():
-    print("Hello, I am your virtual assistant. How can I help you?")
+    print("Hello, I am your virtual assistant.\n")
+    contacts = Contacts()  # odpala się konstruktor klasy
+
     while True:
         command = input(
-            "To add contact type: add, name, address, phone, email, birthday.\nTo change type: change, name, new phone number.\nTo search phone number by name type: search, name.\nTo show all contacts type: show.\nTo add a note to a contact type: addnote, name, note.\nTo manage birthday data type: birthday.\n"
-
+            "What do you want to do with your contacts? Input 'help' to get a list of keywords\n"
         )
-        if command.lower() in ["good bye", "exit", "close", ""]:
-            print("Good bye!")
-            break
-        elif command=='birthday':
-            birthday_task = input('To check birthday info type: check.\nTo check upcoming birthday by number of days type: upcoming.\n')
-            if birthday_task=='check':
+        # print(command)
 
-            elif birthday_task=='upcoming':
-                
-        task = command_parser(command)
+        if command == "exit":
+            break
+
         try:
-            KEYWORDS[task["keyword"]](task["values"])
-        except Exception as e:
-            print(f"I do not understand what you want: {str(e)}")
+            KEYWORDS[command](contacts)
+        except Exception:
+            command = find_closest_match(command)
+            print(f"I think you meant: {command}")
+            KEYWORDS[command](contacts)
+
+
 if __name__ == "__main__":
     main()
