@@ -2,11 +2,11 @@
 # Olka
 
 
-from data_verification import (
-    phone_verification,
-    email_verification,
-    birthday_verification,
-)
+#from data_verification import (
+#    phone_verification,
+#    email_verification,
+#    birthday_verification,
+#)    -> to był import z wstępnego pliku Oli, skoro jest już uzupełniona klasa DataVerification, to ten fragment chyba jest już niepotrzebny :)
 from notes import menage_notes
 from DataVerification import *
 
@@ -60,9 +60,7 @@ class Contacts:
                 print("Format of given email is wrong. Try again\n")
 
         while True:
-            birthday = input(
-                "Input birthday (yyyy-mm-dd): \n"
-            )  # tutaj też potrzebna weryfikacja
+            birthday = input("Input birthday (yyyy-mm-dd): \n")
             if birthday_verification(birthday) == True:
                 break
             else:
