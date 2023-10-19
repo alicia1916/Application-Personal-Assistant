@@ -3,9 +3,11 @@
 
 # Imports
 from contacts import Contacts  # klasa Contacts
-from command_assistant import (
-    command_assistant,
-)  # asystent dowodzenia czyli podpowiadacz ;)
+import Levenshtein
+from nearest_match import find_closest_match
+#from command_assistant import (
+#    command_assistant,
+#)  # asystent dowodzenia czyli podpowiadacz ;)
 
 
 # Command handlers
@@ -88,8 +90,9 @@ def main():
 
         try:
             KEYWORDS[command](contacts)
-        except:
-            command = command_assistant(command)
+        except Exception:
+            command = find_closest_match(command)
+            print(f"I think you meant: {command}")
             KEYWORDS[command](contacts)
 
 

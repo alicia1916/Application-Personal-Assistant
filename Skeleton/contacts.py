@@ -8,7 +8,7 @@
 #    birthday_verification,
 #)    -> to był import z wstępnego pliku Oli, skoro jest już uzupełniona klasa DataVerification, to ten fragment chyba jest już niepotrzebny :)
 from notes import menage_notes
-from DataVerification import *
+from DataVerification import phone_verification, email_verification, birthday_verification
 
 from birthday import calculate_days_to_birthday, sort_dict_list_by_birthday, print_n_day_birthday
 import Levenshtein
@@ -127,6 +127,7 @@ class Contacts:
                 result = dict
         return result
 
+    
     def remove_contact(self, name):
         for contact in self.contacts:
             if contact["name"] == name:
@@ -135,7 +136,7 @@ class Contacts:
     def menage_notes(self):
         while True:
             contact_name = input(
-                "Enter the name of the contact whose notes you want to manage"
+                "Enter the name of the contact whose notes you want to manage. To quit type: exit."
             )
             if contact_name.lower() == "exit":
                 break
@@ -293,17 +294,10 @@ class Contacts:
                                 print("Format of given birthday date is wrong. Try again\nTo exit type: <close> as a new birthday date.")
 
                 elif searched_dict == None:
-                    change_name = input(
-                        "Contact not found. Do you want to change contact's name? yes / no "
+                    no_name = input(
+                        "Contact not found. Do you want to create new contact? yes / no "
                     )
-                    if change_name == "yes":
-                        data = input("Search contact by any information. ")
-                        searched_contact = self.get_contact_by_data(data)
-                        if searched_contact != None:
-                            new_name = input("Enter new name ")
-                            #        contacts.add_contact(name, "", new_phone, "", "")
-                            print("Name has been changed successfully.")
-                        else:
-                            print("Contact not found. Try again.")
-                    elif change_name == "no":
-                        pass
+                    if no_name == "yes":
+                        self.add_contact()
+                    elif no_name == "no":
+                        continue
