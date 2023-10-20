@@ -3,7 +3,7 @@ import Levenshtein
 
 def command_assistant(input_text):
     suggestions = [
-       "add","all", "names", "address", "phone", "email", "birthday", "edit", "delete", "search",
+       "add", "all", "names", "address", "phone", "email", "birthday", "edit", "delete", "search",
         "show", "good bye", "exit", "close", "help"
     ]
     closest_match = None
