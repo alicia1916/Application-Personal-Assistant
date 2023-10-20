@@ -23,3 +23,12 @@ keys_list = list(slownik.keys())
 # print(isinstance(my_list, list))
 # print(keys_list)
 # print(isinstance(keys_list, list))
+
+
+## Sugestie
+# usuwanie notatki po numerze, a nie po treści
+# po wpisaniu złej komnedy, dobrze by było, żeby wyświetliło się chociaż coś takiego: "You entered wrong command. I changed it to {good command}"
+# trzeba zrobić venv
+# edit 'what do you want to edit' usunąć notes
+# save_fun done usunąć
+# w edicie \n, there is no such name/contact zdublowane
