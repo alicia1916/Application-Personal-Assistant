@@ -29,7 +29,7 @@ def print_n_day_birthday(sort_list, day):
     return sort_list
 
 
-def coming_birthday(input_list):
+def cooming_birthday(input_list):
     day = input("up to how many days you want to display birthdays?: ")
     sorted_list = sort_dict_list_by_birthday(input_list)
     print_n_day_birthday(sorted_list, day)
@@ -44,5 +44,5 @@ if __name__ == "__main__":
         {"name": "Alex", "birthday": "1995-12-10"},
         {"name": "Martha", "birthday": "1995-01-10"}
     ]'''
-    day_for_bithday = coming_birthday(input_list)
+    day_for_bithday = cooming_birthday(input_list)
     # jeśli nie chcemy zwracać całej listy nie printujemy day_for_birthday
