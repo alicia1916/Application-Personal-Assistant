@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: Application-Personal-Assistant
+Version: 1
+Summary: Address book and notebook
+Home-page: https://github.com/alicia1916/Application-Personal-Assistant.git
+Author: group_2
+Author-email: alicja.barylski@gmail.com
+License: MIT
+Requires-Dist: python-Levenshtein

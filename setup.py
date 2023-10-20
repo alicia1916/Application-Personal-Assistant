@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_namespace_packages
 
 setup(
     name="Application-Personal-Assistant",
@@ -8,7 +8,7 @@ setup(
     author="group_2",
     author_email="alicja.barylski@gmail.com",
     license="MIT",
-    packages=["Gotowy-szkielet-mozna-wklejac-swoje-kody"],
+    packages=find_namespace_packages(),
     install_requires=["python-Levenshtein"],
     entry_points={
         "console_scripts": ["assistant = application_personal_assistant.main:main"]
