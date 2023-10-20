@@ -56,7 +56,7 @@ def edit(old_data: dict) -> dict:
                             "email": searched_dict["email"],
                             "birthday": searched_dict["birthday"],
                         }
-                        break
+
                     else:
                         print("Format of given number is wrong. Try again")
 
@@ -73,7 +73,7 @@ def edit(old_data: dict) -> dict:
                             "email": new_email,
                             "birthday": searched_dict["birthday"],
                         }
-                        break
+
                     else:
                         print("Format of given email is wrong. Try again")
 
@@ -90,6 +90,6 @@ def edit(old_data: dict) -> dict:
                             "email": searched_dict["email"],
                             "birthday": new_birthday,
                         }
-                        break
+
                     else:
                         print("Format of given birthday date is wrong. Try again")
