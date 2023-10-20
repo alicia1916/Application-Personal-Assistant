@@ -199,8 +199,8 @@ def main():
         try:
             KEYWORDS[command](my_contacts_book)
         except:
-            command = command_assistant(command)
-            KEYWORDS[command](my_contacts_book)
+            new_command = command_assistant(command)
+            KEYWORDS[new_command](my_contacts_book)
 
     save_contacts(my_contacts_book.get_list_contacts())
     print("See you soon!\n")
