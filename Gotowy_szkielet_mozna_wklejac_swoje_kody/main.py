@@ -199,8 +199,13 @@ def main():
         try:
             KEYWORDS[command](my_contacts_book)
         except:
-            new_command = command_assistant(command)
-            KEYWORDS[new_command](my_contacts_book)
+            try:
+                command = command_assistant(command)
+                KEYWORDS[command](my_contacts_book)
+            except:
+                print(
+                    "I don't understand what do you want (you are fucking idiot)...\n***** *** \nWrite 'help' to display available commands"
+                )
 
     save_contacts(my_contacts_book.get_list_contacts())
     print("See you soon!\n")
