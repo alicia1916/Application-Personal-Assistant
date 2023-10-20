@@ -3,8 +3,8 @@ import Levenshtein
 
 def command_assistant(input_text):
     suggestions = [
-        "add", "all", "name", "address", "phone", "email", "birthday", "edit", "delete", "search",
-        "show", "good bye", "exit", "close"
+       "add", "all", "names", "address", "phone", "email", "birthday", "edit", "delete", "search",
+        "show", "good bye", "exit", "close", "help"
     ]
     closest_match = None
     min_distance = float('inf')
