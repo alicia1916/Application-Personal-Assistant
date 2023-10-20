@@ -133,21 +133,39 @@ class Contacts:
             "birthday": birthday,
             "notes": [],
         }
+# zakomentowałam Oli kod i rozszerzyłam go o opcje NO oraz nieprawidłowo wpisany znak
+        # decision = input(
+        #     f"Do you want to add contact {new_contact} to your contacts list? \nEnter 'y' or 'yes' to accept"
+        # ).lower()
 
-        decision = input(
-            f"Do you want to add contact {new_contact} to your contacts list? \nEnter 'y' or 'yes' to accept"
-        ).lower()
+        # if decision in ["yes", "y"]:
+        #     self.contacts.append(new_contact)
+        #     # Contacts.current_id += 1
+        #     print(f"Contact '{name}' has been succesfully added")
+        # else:
+        #     print(f"Contact '{name}' hasn't been added")
 
-        if decision in ["yes", "y"]:
-            self.contacts.append(new_contact)
-            # Contacts.current_id += 1
-            print(f"Contact '{name}' has been succesfully added")
-        else:
-            print(f"Contact '{name}' hasn't been added")
+        # # print(f"You have {self.count_contacts()} contacts")
+        # self.count_contacts()
 
-        # print(f"You have {self.count_contacts()} contacts")
+        while True:
+            decision = input(
+                f"Do you want to add contact {new_contact} to your contacts list? \nEnter 'y' or 'yes' to accept\nEnter 'n' or 'no' to not accept\n"
+            ).lower()
+            if decision in ["yes", "y"]:
+                self.contacts.append(new_contact)
+                # Contacts.current_id += 1
+                print(f"Contact '{name}' has been succesfully added")
+                break
+            elif decision in ["n", "no"]:
+                print(f"Contact '{name}' hasn't been added")
+                break
+            else:
+                print(f"Contact '{name}' hasn't been added, enter 'y' or 'yes'/'n' or 'no' to accept or not accept the contact.")
+                continue
+
+            # print(f"You have {self.count_contacts()} contacts")
         self.count_contacts()
-
     #   adds new contact with all fields except notes; ask user for name, address, phone, email, birthday
     #
     #
