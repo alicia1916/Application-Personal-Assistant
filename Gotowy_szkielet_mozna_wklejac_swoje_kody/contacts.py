@@ -133,7 +133,7 @@ class Contacts:
             "birthday": birthday,
             "notes": [],
         }
-# zakomentowałam Oli kod i rozszerzyłam go o opcje NO oraz nieprawidłowo wpisany znak
+        # zakomentowałam Oli kod i rozszerzyłam go o opcje NO oraz nieprawidłowo wpisany znak
         # decision = input(
         #     f"Do you want to add contact {new_contact} to your contacts list? \nEnter 'y' or 'yes' to accept"
         # ).lower()
@@ -161,11 +161,14 @@ class Contacts:
                 print(f"Contact '{name}' hasn't been added")
                 break
             else:
-                print(f"Contact '{name}' hasn't been added, enter 'y' or 'yes'/'n' or 'no' to accept or not accept the contact.")
+                print(
+                    f"Contact '{name}' hasn't been added, enter 'y' or 'yes'/'n' or 'no' to accept or not accept the contact."
+                )
                 continue
 
             # print(f"You have {self.count_contacts()} contacts")
         self.count_contacts()
+
     #   adds new contact with all fields except notes; ask user for name, address, phone, email, birthday
     #
     #
@@ -280,7 +283,7 @@ class Contacts:
                 except:
                     print("Edition of contacts failed")
 
-        print(f"contact {name} has been edited")
+        print(f"contact <{name}> has been edited.")
 
     #   edits fields of choosen contact; user decides inside function what and how excacly(?) change
     # zamiast tego zrobić set, a tą edycję wywalić jako moduł zewnętrzny albo klasę Contact_editor?
