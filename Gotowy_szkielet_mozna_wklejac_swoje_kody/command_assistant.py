@@ -1,14 +1,18 @@
-# Paweł
+import Levenshtein
 
 
-def command_assistant(
-    wrong_command: str,
-) -> str:  # input: zła komenda, output: dobra komenda
-    print("     Tu wskoczy kod Pawla (command_assistant), na razie jest prowizorka\n")
-    #    while wrong_command in ["\n", ""]:
-    #        wrong_command = input(
-    #            "What do you want to do? Input 'help' to get a list of keywords\n"
-    #        )
+def command_assistant(input_text):
+    suggestions = [
+        "add", "all", "name", "address", "phone", "email", "birthday", "edit", "delete", "search",
+        "show", "good bye", "exit", "close"
+    ]
+    closest_match = None
+    min_distance = float('inf')
 
-    good_command = "help"  # tu też wpisałam byle co ;)
+    for suggestion in suggestions:
+        distance = Levenshtein.distance(input_text, suggestion)
+        if distance < min_distance:
+            min_distance = distance
+            good_command = suggestion
+
     return good_command
