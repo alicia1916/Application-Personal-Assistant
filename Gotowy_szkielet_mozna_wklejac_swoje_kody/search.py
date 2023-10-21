@@ -1,4 +1,4 @@
-def search_by_notes(contacts):
+def search_by_notes(contacts): #funkcja Kamila przeklejona
     note = input("Input note you want to find.\n")
     i = 0
     for contact in contacts:
@@ -11,7 +11,7 @@ def search_by_notes(contacts):
         print(f"You found {i} contacts with that note.")
 
 
-def searcher(contacts, keyword):
+def searcher(contacts, keyword): #funkcja dopisana przez Olkę
     if keyword == "notes":
         search_by_notes(contacts)
     else:
