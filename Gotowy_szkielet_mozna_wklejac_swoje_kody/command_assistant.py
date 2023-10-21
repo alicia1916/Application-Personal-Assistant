@@ -14,5 +14,5 @@ def command_assistant(input_text):
         if distance < min_distance:
             min_distance = distance
             good_command = suggestion
-
+    print(f" Bad Command: {input_text}, Correct Command is: {good_command} ")
     return good_command
