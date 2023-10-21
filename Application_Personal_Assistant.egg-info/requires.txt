@@ -1,1 +1,5 @@
-python-Levenshtein
+First Time steps:
+In Windows: https://www.python.org/downloads/windows/ 
+when you install python:  <<< checkbox: add python.exe to path>>> is very important!!!
+Win + R, cmd, pip install python-Levenshtein
+Thats all.
