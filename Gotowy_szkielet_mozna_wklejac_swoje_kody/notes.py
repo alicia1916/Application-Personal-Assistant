@@ -3,16 +3,23 @@
 def add_note(notes: list) -> list:
     new_note = input("Write a new note\n")
     notes.append(new_note)
+    print("Note added.")
     return notes
 
 def delete_note(notes: list) -> list:
-    note_to_delete = input("Enter the note you want to delete: ")
-    
-    if note_to_delete in notes:
-        notes.remove(note_to_delete)
-    else:
-        print("Note not found in the list.")
-    return notes
+
+    show_notes(notes)
+    try:
+        choice = int(input("Enter the number of the note you want to delete: ")) - 1
+        if 0 <= choice < len(notes):
+            notes.remove(notes[choice])
+            print("Note deleted.")
+        else:
+            print("Invalid note number.")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+    return notes  
+
 
 def edit_note(notes: list) -> list:
     show_notes(notes)
@@ -21,6 +28,7 @@ def edit_note(notes: list) -> list:
         if 0 <= choice < len(notes):
             new_note = input("Write a new note: ")
             notes[choice] = new_note
+            print("Note edited.")
         else:
             print("Invalid note number.")
     except ValueError:
