@@ -12,6 +12,7 @@ from command_assistant import (
     command_assistant,
 )  # asystent dowodzenia czyli podpowiadacz ;)
 from load_and_save import save_contacts, read_contacts
+from search import searcher
 
 
 #
@@ -46,6 +47,7 @@ def help_fun(book: Contacts):
         names - display all names with no more informations
         notes - menage notes of choosen contact     (value/values required in next step/steps) - Kamil (outer notes manager)
         birthday - display contacts whoose birthday are cooming... - Pawel (outer displayer)
+        search - search contact by choosen field    (value/values required in next step/steps)
         edit - edit contact     (value/values required in next step/steps) - Ala (editor - outclass? inclass?)
         delete - remove contact     (value/values required in next step/steps)
         exit
@@ -144,6 +146,20 @@ def edit_fun(book: Contacts):
 #
 
 
+def search_fun(book: Contacts):
+    while True:
+        keyword = input(
+            "Write the name of field by that you want to search contacts (address/ phone/ email/ birthady/ notes) or input exit to resign\n"
+        )
+        if keyword == "exit":
+            break
+        else:
+            try:
+                searcher(book.contacts, keyword)
+            except:
+                print("There is no such field.\n")
+
+
 def delete_fun(book: Contacts):
     print("You need to enter the name of contact to remove it")
     check_and_call(book.remove_contact, book)
@@ -165,6 +181,7 @@ KEYWORDS = {
     "names": names_fun,
     "notes": notes_fun,
     "birthday": birthday_fun,
+    "search": search_fun,
     "edit": edit_fun,
     "delete": delete_fun,
 }
@@ -177,7 +194,7 @@ KEYWORDS = {
 
 
 def main():
-    print("\n\nHello, I am your virtual assistant")
+    print("\n\nHello Idiot, I am your virtual assistant")
     my_contacts_book = Contacts()  # odpala się konstruktor klasy
     loaded_contacts = read_contacts()
     my_contacts_book.set_list_contacts(loaded_contacts)
