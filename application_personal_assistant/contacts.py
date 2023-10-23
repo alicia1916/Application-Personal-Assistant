@@ -98,13 +98,12 @@ class Contacts:
                 print(f"New contact hasn't been added...")
                 return None
 
-            elif self.is_name_exist(name):
+            elif self.is_name_exist(name, print_if_not=False):
                 print(
                     f"Such name exist in your contacts. List of names in your contacts: {list(self.get_all_names())}. You have to choose different name."
                 )
                 continue
             else:
-                #
                 break
 
         address = input(
