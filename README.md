@@ -10,13 +10,13 @@ The personal assistant is able to:<br>
 
 COMMANDS <br>
 Available commands: <br>
-save - saving list of contacts to file <br>
+save - save list of contacts to file <br>
 add - add new contacts to your contacts book <br>
 show - display all information about contact/contacts <br>
 names - display all names with no more informations <br>
-notes - menage notes of choosen contact <br>
+notes - menage notes of chosen contact <br>
 birthday - check upcoming birthday <br>
-search - search contact by choosen field <br> 
+search - search contact by chosen field <br> 
 edit - edit contact <br>
 delete - remove contact <br>
 exit <br>
