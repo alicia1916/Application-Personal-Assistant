@@ -87,7 +87,7 @@ class Contacts:
     #
     #
     #
-   def add_contact(self):
+    def add_contact(self):
         # print(f"add_contacts(self)")
         while True:
             name = input(
