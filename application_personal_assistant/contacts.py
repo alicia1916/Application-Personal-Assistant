@@ -87,39 +87,64 @@ class Contacts:
     #
     #
     #
-    def add_contact(self):
+   def add_contact(self):
         # print(f"add_contacts(self)")
         while True:
-            name = input("Input name: \n")
-            if self.is_name_exist(name):
+            name = input(
+                "Input name of contact to continue adding new contact or write 'exit' to resign: \n"
+            )
+            if name == "exit":
+                print(f"New contact hasn't been added...")
+                return None
+
+            elif self.is_name_exist(name):
                 print(
                     f"Such name exist in your contacts. List of names in your contacts: {list(self.get_all_names())}. You have to choose different name."
                 )
                 continue
             else:
+                #
                 break
 
-        address = input("Input address: \n")
+        address = input(
+            "Input address of contact to continue adding new contact or write 'exit' to resign: \n"
+        )
+        if address == "exit":
+            print(f"New contact hasn't been added...")
+            return None
 
         while True:
-            phone = input("Input phone number: \n")
-            if phone_verification(phone) == True:
+            phone = input(
+                "Input phone number of contact to continue adding new contact or write 'exit' to resign: \n"
+            )
+            if phone == "exit":
+                print(f"New contact hasn't been added")
+                return None
+            elif phone_verification(phone) == True:
                 break
             else:
                 print("Format of given number is wrong. Try again\n")
 
         while True:
-            email = input("Input email address: \n")
-            if email_verification(email) == True:
+            email = input(
+                "Input email of contact to continue adding new contact or write 'exit' to resign: \n"
+            )
+            if email == "exit":
+                print(f"New contact hasn't been added")
+                return None
+            elif email_verification(email) == True:
                 break
             else:
                 print("Format of given email is wrong. Try again\n")
 
         while True:
             birthday = input(
-                "Input birthday (yyyy-mm-dd): \n"
-            )  # tutaj też potrzebna weryfikacja
-            if birthday_verification(birthday) == True:
+                "Input birthday (yyyy-mm-dd) of contact to continue adding new contact or write 'exit' to resign: \n"
+            )
+            if birthday == "exit":
+                print(f"New contact hasn't been added")
+                return None
+            elif birthday_verification(birthday) == True:
                 break
             else:
                 print("Format of given birthday is wrong. Try again\n")
@@ -159,7 +184,7 @@ class Contacts:
                 break
             elif decision in ["n", "no"]:
                 print(f"Contact '{name}' hasn't been added")
-                break
+                return None
             else:
                 print(
                     f"Contact '{name}' hasn't been added, enter 'y' or 'yes'/'n' or 'no' to accept or not accept the contact."
@@ -168,6 +193,8 @@ class Contacts:
 
             # print(f"You have {self.count_contacts()} contacts")
         self.count_contacts()
+        return "Contact added"
+
 
     #   adds new contact with all fields except notes; ask user for name, address, phone, email, birthday
     #
