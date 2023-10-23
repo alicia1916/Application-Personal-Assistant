@@ -11,6 +11,8 @@ setup(
     packages=find_namespace_packages(),
     install_requires=["python-Levenshtein"],
     entry_points={
-        "console_scripts": ["assistant = application_personal_assistant.main:main"]
+        "console_scripts": [
+            "assistant = Application-Personal-Assistant.application_personal_assistant.main:main"
+        ]
     },
 )
