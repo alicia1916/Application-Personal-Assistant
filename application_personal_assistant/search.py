@@ -11,9 +11,12 @@ def search_by_notes(contacts): #funkcja Kamila przeklejona
         print(f"You found {i} contacts with that note.")
 
 
-def searcher(contacts, keyword): #funkcja dopisana przez Olkę
+def searcher(contacts, keyword):  # funkcja dopisana przez Olkę
+    print(list(contacts[0].keys()))
     if keyword == "notes":
         search_by_notes(contacts)
+    elif keyword not in list(contacts[0].keys()):
+        raise Exception
     else:
         phrase_to_find = input(f"Input {keyword} to find\n")
         list_of_expected_contacts = []
