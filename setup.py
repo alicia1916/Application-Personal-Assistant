@@ -12,7 +12,7 @@ setup(
     install_requires=["python-Levenshtein"],
     entry_points={
         "console_scripts": [
-            "apa = Application-Personal-Assistant-main.application_personal_assistant.main:main"
+            "apa = application_personal_assistant.main:main"
         ]
     },
 )
