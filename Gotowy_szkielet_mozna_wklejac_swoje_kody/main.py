@@ -63,8 +63,10 @@ def save_fun(book: Contacts):
 
 
 def add_fun(book: Contacts):
-    book.add_contact()
-    save_fun(book)
+    if book.add_contact() == None:
+        pass
+    else:
+        save_fun(book)
 
 
 #
