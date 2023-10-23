@@ -73,12 +73,13 @@ class Contacts:
     #
     #
 
-    def is_name_exist(self, name: str) -> bool:
+    def is_name_exist(self, name: str, print_if_not = True) -> bool:
         # print(f"is_name_exist(self, {name})")
         if name in self.get_all_names():
             return True
         else:
-            print("There is no such name")
+            if print_if_not:
+                print("There is no such name")
             return False
 
     #   checks if given name exist in contacts list
