@@ -29,4 +29,11 @@ when you install python:  <<< checkbox: add python.exe to path>>> is very import
 Win + R, cmd, pip install python-Levenshtein <br>
 That's all! <br>
 
+INSTALLATION <br>
+1. Click on the green "Code" button located near the top right of the repository's main page. <br>
+2. In the dropdown menu, select "Download ZIP." This will download the entire repository as a ZIP file to your computer. <br>
+3. Locate the downloaded ZIP file and extract its contents to a folder on your computer. <br>
+4. Open a terminal or command prompt and navigate to the folder where you extracted the contents. <br>
+5. Type ,,pip install ." .  <br>
+   
 After installation write a command ,,assistant" in the command prompt to run the program. <br>
