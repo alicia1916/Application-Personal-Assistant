@@ -7,6 +7,7 @@ The personal assistant is able to:<br>
 – search for contacts among the phonebook contacts, edit and delete tchem from the contact book <br>
 – display a list of contacts whose birthdays are within a specified number of days from the current date <br>
 – save notes with text information, search by notes, edit and delete them. <br>
+The personal assistant saves information on the user's hard drive in the user's folder and can be restarted without data loss. <br>
 
 COMMANDS <br>
 Available commands: <br>
@@ -28,3 +29,4 @@ when you install python:  <<< checkbox: add python.exe to path>>> is very import
 Win + R, cmd, pip install python-Levenshtein <br>
 That's all! <br>
 
+After installation write a command ,,assistant" in the command prompt to run the program. <br>
