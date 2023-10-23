@@ -1,3 +1,0 @@
-Ten szkielet zrobiłam mniej więcej według wczorajszego schematu (lekko zmodyfikowanego) tak, żeby aplikacja jako tako działała. Oczywiście w części działa źle, gdyż każdy musi wkleić swój kod do odpowiedniego modułu, żeby faktycznie robiła to co ma robić. Jeśli chodzi o nazwy funkcji, to dałam byle jakie, później pozmieniam na Wasze. Widzę tutaj konieczność wykonania dodatkowych zadań, które nie były rozdzielone i dotyczą metod klasy Contacts. Z modułów, myślę, że spokojnie można zrobić klasy ale to już jak chcecie.
-Możnaby się też pokusić o to, żeby każde pole w słowniku w klasie Contacts było też osobną klasą i jakoś ten program przerobić - jakbyśmy nie mieli nic lepszego do roboty ;)
-Mój angielski jest jaki więc mogą wystąpić błędy językowe :D
