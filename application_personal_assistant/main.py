@@ -1,7 +1,7 @@
 from contacts import Contacts  # klasa Contacts
 from command_assistant import (
     command_assistant,
-)  # asystent dowodzenia czyli podpowiadacz ;)
+)  # prompter - check and give us the correct command
 from load_and_save import save_contacts, read_contacts
 from search import searcher
 
@@ -54,7 +54,6 @@ def help_fun(book: Contacts):
 
 def save_fun(book: Contacts):
     save_contacts(book.get_list_contacts())
-    #print("save_fun done")  # ta linijka do usunięcia
 
 
 #
@@ -188,7 +187,7 @@ KEYWORDS = {
 
 def main():
     print("\n\nHello User, I am your virtual assistant")
-    my_contacts_book = Contacts()  # odpala się konstruktor klasy
+    my_contacts_book = Contacts()  # start class constuctor
     loaded_contacts = read_contacts()
     my_contacts_book.set_list_contacts(loaded_contacts)
 
