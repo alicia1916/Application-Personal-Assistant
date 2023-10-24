@@ -1,8 +1,3 @@
-# Ala
-# Olka
-#
-#
-#
 from data_verification import (
     phone_verification,
     email_verification,
@@ -158,20 +153,7 @@ class Contacts:
             "birthday": birthday,
             "notes": [],
         }
-        # zakomentowałam Oli kod i rozszerzyłam go o opcje NO oraz nieprawidłowo wpisany znak
-        # decision = input(
-        #     f"Do you want to add contact {new_contact} to your contacts list? \nEnter 'y' or 'yes' to accept"
-        # ).lower()
-
-        # if decision in ["yes", "y"]:
-        #     self.contacts.append(new_contact)
-        #     # Contacts.current_id += 1
-        #     print(f"Contact '{name}' has been succesfully added")
-        # else:
-        #     print(f"Contact '{name}' hasn't been added")
-
-        # # print(f"You have {self.count_contacts()} contacts")
-        # self.count_contacts()
+        
 
         while True:
             decision = input(
@@ -312,9 +294,7 @@ class Contacts:
 
         print(f"contact <{name}> has been edited.")
 
-    #   edits fields of choosen contact; user decides inside function what and how excacly(?) change
-    # zamiast tego zrobić set, a tą edycję wywalić jako moduł zewnętrzny albo klasę Contact_editor?
-    #
+  
     #
     #
     #
